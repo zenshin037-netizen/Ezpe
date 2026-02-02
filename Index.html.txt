@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kartik ❤️ Gauri</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  animation: pop 1s ease;
+}
+
+h1 {
+  color: #ff4d6d;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#musicBtn {
+  background: #ff85a2;
+  color: white;
+}
+
+#yesBtn {
+  background: #ff4d6d;
+  color: white;
+}
+
+#noBtn {
+  background: #ddd;
+  color: #333;
+  position: absolute;
+}
+
+.heart {
+  position: absolute;
+  font-size: 20px;
+  animation: floatUp 4s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="loveSong" loop>
+  <source src="https://audio.jukehost.co.uk/Jl3x1y4VQf9g6nTnU5kV0hGx5c3sZJtR" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Kartik ❤️ Gauri</h1>
+
+  <button id="musicBtn" onclick="playMusic()">Tap to start music 🎶</button>
+
+  <p id="message">
+    Gauri 💕<br><br>
+    I never really believed in destiny,<br>
+    until I found you 🥹❤️<br><br>
+    Will you be my Valentine? 💖
+  </p>
+
+  <button id="yesBtn" onclick="yesClicked()">YES 💘</button>
+  <button id="noBtn" onmouseover="moveNo()">NO 🙈</button>
+</div>
+
+<script>
+function playMusic() {
+  document.getElementById("loveSong").play();
+  document.getElementById("musicBtn").innerText = "Music playing 💕";
+}
+
+function yesClicked() {
+  document.getElementById("message").innerHTML =
+    "YAYYYY 😍❤️<br><br>" +
+    "Until I found you, love was just a word…<br>" +
+    "Now it’s YOU 🥹💖<br><br>" +
+    "Happy Valentine’s Day Gauri ❤️<br>" +
+    "Forever yours,<br><b>Kartik</b> 😘";
+
+  createHearts(30);
+}
+
+function moveNo() {
+  const btn = document.getElementById("noBtn");
+  btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+  btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+}
+
+function createHearts(count) {
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.bottom = "0px";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }
+}
+</script>
+
+</body>
+</html>
